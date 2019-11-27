@@ -71,18 +71,21 @@ class _aspiranteScreenState extends State<aspiranteScreen> {
             asdb.Aspirante fulano = new asdb.Aspirante(
               id: 0,
               nombre: controlNombre.text+" "+controlPaterno.text+" "+controlMaterno.text,
-              edad: int.parse(controledad.text),
-              genero: selectRadio,
-              email: controlcorreo.text,
+              edad: controledad.text,
+              sexo: selectRadio.toString(),
+              correo: controlcorreo.text,
               phone: controlmovil.text,
               escuela: controlprepa.text,
               op1: _opc1,
               op2: _opc2,
               op3: _opc3,
-              fecha: date
+              date: DateFormat("dd-MM-yyyy").format(now).toString(),
+              sincronizado: 0
             );
             await asdb.insertAspirante(fulano);
             print(await asdb.aspirantes());
+            reset();
+            AlertaExitoR(context: context,mensaje: "Registro exitoso",vista: 2);
           },
           
         ),
@@ -127,7 +130,7 @@ class _aspiranteScreenState extends State<aspiranteScreen> {
       child: Text("Fecha de registro: "),
     ),
     Container(
-      child: Text(new DateFormat("dd-MM-yyyy").format(now)),
+      child: Text(DateFormat("dd-MM-yyyy").format(now)),
     )
     ],
   )
@@ -231,7 +234,7 @@ Widget sexSelector(){
     if(tag=='Correo'){l=45;input=TextInputType.emailAddress;}
     if(tag=='Teléfono'){l=10;input=TextInputType.phone;}
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(3.0),
       child: Container(
         height: alto/11,
         child: Row(

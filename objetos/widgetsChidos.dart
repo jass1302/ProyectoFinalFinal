@@ -37,7 +37,7 @@ void mostrarAlerta({BuildContext context, String mensaje}) {
   );
 }
 
-void AlertaExitoR({BuildContext context, String mensaje}) {
+void AlertaExitoR({BuildContext context, String mensaje, int vista}) {
   showDialog(
     context: context,
     builder: (context) {
@@ -58,7 +58,10 @@ void AlertaExitoR({BuildContext context, String mensaje}) {
               final route = MaterialPageRoute(
                 builder: (context)=>Login(),
               );
+              if(vista==1)
               Navigator.push(context, route);
+              if(vista==2)
+              Navigator.pop(context);
             },
           ),
         ],

@@ -3,41 +3,43 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:proyectofinal/database/db.dart';
 
-final Database  = crearDB();
+//final Database  = crearDB();
 
 class Aspirante { // En esta clase creamos la estructura de datos del Usuario
   int id;
   final String nombre;
-  final int edad;
-  final int genero;
-  final String email;
+  final String edad;
+  final String sexo;
+  final String correo;
   final String phone;
   final String escuela;
   final String op1;
   final String op2;
   final String op3;
-  final DateTime fecha;
+  final String date;
+  final int sincronizado;
 
-  Aspirante({this.id,this.nombre,this.edad,this.genero,this.email,this.phone,this.escuela,this.op1,this.op2,this.op3,this.fecha});
+  Aspirante({this.id,this.nombre,this.edad,this.sexo,this.correo,this.phone,this.escuela,this.op1,this.op2,this.op3,this.date,this.sincronizado});
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'nombre' : nombre,
       'edad': edad,
-      'genero' : genero,
-      'email' : email,
+      'sexo' : sexo,
+      'correo' : correo,
       'phone': phone,
       'escuela': escuela,
       'op1':op1,
       'op2':op2,
       'op3':op3,
-      'fecha':fecha
+      'date':date,
+      'sincronizado': sincronizado
     };
   }
   @override
   String toString() {
-    return 'Aspirante{id: $id,nombre: $nombre,edad: $edad, genero: $genero,email: $email, phone: $phone,escuela: $escuela, op1: $op1, op2: $op2, op3: $op3, fecha: $fecha}';
+    return 'Aspirante{id: $id,nombre: $nombre,edad: $edad, sexo: $sexo,email: $correo, phone: $phone,escuela: $escuela, op1: $op1, op2: $op2, op3: $op3, date: $date,sincronizado: $sincronizado}';
   }
 }
 
@@ -71,7 +73,7 @@ Future<void> updateAspirante(Aspirante asp) async {
 }
 
 Future<void> insertAspirante(Aspirante asp) async {  // Creamos nuestra funcion para insertar en la tabla
-  final db = await crearaspirante();
+  final db = await crearDB();
   List<Map<String, dynamic>> maps = await db.query('aspirante');
   asp.id= maps.length+1;
   // Insertamos el usuario en la tabla correcta.
@@ -99,14 +101,14 @@ Future<List<Aspirante>> aspirantes() async {
       id: maps[i]['id'],
       nombre: maps[i]['nombre'],
       edad: maps[i]['edad'],
-      genero: maps[i]['sexo'],
-      email: maps[i]['email'],
+      sexo: maps[i]['sexo'],
+      correo: maps[i]['correo'],
       phone: maps[i]['phone'],
       escuela: maps[i]['escuela'],
       op1: maps[i]['op1'],
       op2: maps[i]['op2'],
       op3: maps[i]['op3'],
-      fecha: maps[i]['fecha']
+      date: maps[i]['date']
     );
   });
 }

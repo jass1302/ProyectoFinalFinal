@@ -75,7 +75,7 @@ class _registroState extends State<registro> {
 //Cuando agregamos al usuario esta linea
 //Imprime en consola la lista de usuarios y contraseñas de estos
   print(await data.users());
-  AlertaExitoR(context: context,mensaje: "¡Registro exitoso!");
+  AlertaExitoR(context: context,mensaje: "¡Registro exitoso!",vista: 1);
 } else {
 //En caso de tener el campo "Contraseña" y "Repetir contraseña" distintos
 //Mostramos una alerta de error
