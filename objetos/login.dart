@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyectofinal/objetos/widgetsChidos.dart';
-import 'package:proyectofinal/database/User.dart' as data;
-import 'package:proyectofinal/vistas/cuenta.dart';
+import 'package:proyecto/objetos/widgetsChidos.dart';
+import 'package:proyecto/database/User.dart' as data;
+import 'package:proyecto/vistas/cuenta.dart';
 // CONTROLADORES
 var user = TextEditingController();
 var pass = TextEditingController();

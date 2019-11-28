@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyectofinal/main.dart';
+import 'package:proyecto/main.dart';
 
 Widget logoUpiiz(altura,ancho){
   return Container(
@@ -54,14 +54,16 @@ void AlertaExitoR({BuildContext context, String mensaje, int vista}) {
           FlatButton(
             child: Text("Aceptar"),
             onPressed: () {
-              Navigator.pop(context);
-              final route = MaterialPageRoute(
-                builder: (context)=>Login(),
-              );
-              if(vista==1)
-              Navigator.push(context, route);
-              if(vista==2)
-              Navigator.pop(context);
+              if(vista == 1){
+                Navigator.pop(context);
+                final route = MaterialPageRoute(
+                  builder: (context)=>Login(),
+                );
+                Navigator.push(context, route);
+              }if(vista == 2){
+                Navigator.pop(context);
+
+              }
             },
           ),
         ],

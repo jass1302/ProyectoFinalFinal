@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proyectofinal/database/db.dart' as data;
-import 'package:proyectofinal/vistas/cuenta.dart' as cuenta;
-import 'package:proyectofinal/objetos/widgetsChidos.dart' as obj;
-import 'package:proyectofinal/objetos/login.dart';
-import 'package:proyectofinal/objetos/login.dart';
-import 'package:proyectofinal/vistas/registro.dart';
+import 'package:proyecto/database/db.dart' as data;
+import 'package:proyecto/vistas/cuenta.dart' as cuenta;
+import 'package:proyecto/objetos/widgetsChidos.dart' as obj;
+import 'package:proyecto/objetos/login.dart';
+import 'package:proyecto/objetos/login.dart';
+import 'package:proyecto/vistas/registro.dart';
 
 void main() => runApp(proyectoApp());
 
@@ -14,7 +14,7 @@ class proyectoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
        debugShowCheckedModeBanner: false,
-      title: 'Proyecto Final',
+      title: 'Proyec6to Final',
       theme: ThemeData(
         primarySwatch: Colors.orange
       ),

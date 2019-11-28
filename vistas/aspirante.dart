@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:proyectofinal/objetos/widgetsChidos.dart';
-import 'package:proyectofinal/database/dbaspirante.dart' as asdb;
+import 'package:proyecto/objetos/widgetsChidos.dart';
+import 'package:proyecto/database/dbaspirante.dart' as asdb;
 //Controladores
 final controlNombre = TextEditingController();
 final controlPaterno = TextEditingController();
@@ -20,8 +20,9 @@ String _opc2 = 'Ingeniería en Sistemas';
 String _opc3 = 'Ingeniería en Sistemas';
 int selectRadio =0;
 final now = new DateTime.now();
-final date = new DateTime(now.year,now.month,now.day);
-//
+final date = new DateFormat("dd-MM-yyyy").format(now);
+
+//child: Text(new DateFormat("dd-MM-yyyy").format(now)),
 class aspiranteScreen extends StatefulWidget {
   @override
   _aspiranteScreenState createState() => _aspiranteScreenState();
@@ -79,13 +80,12 @@ class _aspiranteScreenState extends State<aspiranteScreen> {
               op1: _opc1,
               op2: _opc2,
               op3: _opc3,
-              date: DateFormat("dd-MM-yyyy").format(now).toString(),
-              sincronizado: 0
+              date: date.toString(),
+              sincronizado: 0,
             );
             await asdb.insertAspirante(fulano);
             print(await asdb.aspirantes());
-            reset();
-            AlertaExitoR(context: context,mensaje: "Registro exitoso",vista: 2);
+            AlertaExitoR(context: context,mensaje: "¡Aspirante agregado con éxito!",vista: 2);
           },
           
         ),
@@ -130,7 +130,7 @@ class _aspiranteScreenState extends State<aspiranteScreen> {
       child: Text("Fecha de registro: "),
     ),
     Container(
-      child: Text(DateFormat("dd-MM-yyyy").format(now)),
+      child: Text(date.toString()),
     )
     ],
   )
@@ -147,7 +147,7 @@ class _aspiranteScreenState extends State<aspiranteScreen> {
       child: Row(
         children: <Widget>[
           Container(
-            width: ancho*.25,
+            width: ancho*.20,
             child: Align(child: Text("$opc: "),alignment: Alignment.center,),
           ),
           SizedBox(width: 100,),
@@ -234,7 +234,7 @@ Widget sexSelector(){
     if(tag=='Correo'){l=45;input=TextInputType.emailAddress;}
     if(tag=='Teléfono'){l=10;input=TextInputType.phone;}
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: const EdgeInsets.all(7.0),
       child: Container(
         height: alto/11,
         child: Row(

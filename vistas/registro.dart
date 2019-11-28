@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyectofinal/main.dart';
-import 'package:proyectofinal/database/User.dart' as data;
-import 'package:proyectofinal/objetos/widgetsChidos.dart';
+import 'package:proyecto/main.dart';
+import 'package:proyecto/database/User.dart' as data;
+import 'package:proyecto/objetos/widgetsChidos.dart';
 
 var c1 = TextEditingController();
 var c2 = TextEditingController();

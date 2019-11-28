@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyectofinal/main.dart' as m;
-import 'package:proyectofinal/vistas/aspirante.dart';
-
+import 'package:proyecto/main.dart' as m;
+import 'package:proyecto/vistas/aspirante.dart';
+import 'package:proyecto/vistas/Nosincronizados.dart' as sinc;
 Widget principal(BuildContext context, String nombre){
       return new MaterialApp(
         theme: ThemeData(
@@ -49,7 +49,11 @@ Widget menu(BuildContext context, nombre){
                 Icons.bookmark,
                 color: Color.fromRGBO(118, 41, 51, 1),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return  sinc.sincronizadox(context);
+                }));
+              },
             ),
             ListTile(
               title: Text("No sincronizados"),

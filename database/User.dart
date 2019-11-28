@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:proyectofinal/database/db.dart';
+import 'package:proyecto/database/db.dart';
 
 Future<void> deleteUser(int id) async {
   // Get a reference to the database.

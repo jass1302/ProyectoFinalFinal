@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:proyectofinal/database/db.dart';
+import 'package:proyecto/database/db.dart';
 
-//final Database  = crearDB();
+final Database  = crearDB();
 
 class Aspirante { // En esta clase creamos la estructura de datos del Usuario
   int id;
@@ -18,7 +18,6 @@ class Aspirante { // En esta clase creamos la estructura de datos del Usuario
   final String op3;
   final String date;
   final int sincronizado;
-
   Aspirante({this.id,this.nombre,this.edad,this.sexo,this.correo,this.phone,this.escuela,this.op1,this.op2,this.op3,this.date,this.sincronizado});
 
   Map<String, dynamic> toMap() {
@@ -34,12 +33,12 @@ class Aspirante { // En esta clase creamos la estructura de datos del Usuario
       'op2':op2,
       'op3':op3,
       'date':date,
-      'sincronizado': sincronizado
+      'sincronizado':sincronizado
     };
   }
   @override
   String toString() {
-    return 'Aspirante{id: $id,nombre: $nombre,edad: $edad, sexo: $sexo,email: $correo, phone: $phone,escuela: $escuela, op1: $op1, op2: $op2, op3: $op3, date: $date,sincronizado: $sincronizado}';
+    return 'Aspirante{id: $id,nombre: $nombre,edad: $edad, genero: $sexo,correo: $correo, phone: $phone,escuela: $escuela, op1: $op1, op2: $op2, op3: $op3, date: $date}';
   }
 }
 
@@ -108,7 +107,14 @@ Future<List<Aspirante>> aspirantes() async {
       op1: maps[i]['op1'],
       op2: maps[i]['op2'],
       op3: maps[i]['op3'],
-      date: maps[i]['date']
+      date: maps[i]['date'],
+      sincronizado: maps[i]['sincronizado'],
     );
   });
+}
+Future<void> Sincronizzar(Aspirante asp) async {
+  // Get a reference to the database.
+  final db = await crearDB();
+  var id = asp.id;
+  db.rawQuery("UPDATE aspirante SET sincronizado = '1' WHERE id = $id");
 }
